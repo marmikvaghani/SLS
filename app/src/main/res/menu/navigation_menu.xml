@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="HardcodedTex">
+
+    <item
+        android:textColor="@color/black"
+        android:title="પ્રોફાઇલ" />
+
+    <item
+        android:title="Pending Complain Today" />
+
+    <item
+        android:title="Complet Complain Today" />
+    <item
+        android:title="Compalin Time" />
+
+    <item
+        android:title="Lunch Time" />
+
+    <item
+        android:title="Traveling Time" />
+
+    <item
+        android:title="Wastage Time" />
+    <item
+        android:title="Logout" />
+    </menu>

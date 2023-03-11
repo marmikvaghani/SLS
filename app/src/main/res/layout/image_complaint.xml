@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:id="@+id/cdata"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/ccmpid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textSize="16dp"
+            android:id="@+id/cpartyName"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:padding="3dp"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+
+            android:id="@+id/cpartyCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/cengineerCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:id="@+id/cmachineNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:id="@+id/cdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+        <TextView
+            android:padding="3dp"
+            android:id="@+id/ccallBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:id="@+id/clogby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/cengineerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:id="@+id/ccreateDateAt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/ccreateTimeAt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/cupadateDateAt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/cupadateTimeAt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/crepeatComplaintNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/cmachineType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/cendTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/cstartTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/cupadateAt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/csolution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/startComplaintLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/startAndEndTimeDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/endComplaintLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
