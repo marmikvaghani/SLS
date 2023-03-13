@@ -65,5 +65,6 @@ public interface Api {
 
      @POST("eng-apk-api/verify-otp")
      @FormUrlEncoded
-     Call<OtpExample> getOtp( @Field("name") String name,@Field("passWord")String passWord,@Field("opt")int opt);
+     Call<OtpExample> getOtp( @Field("name") String name,@Field("passWord")String passWord,@Field("otp")String opt);
+//     Call<OtpExample> getOtp( @Field("name") String name,@Field("passWord")String passWord,@Field("opt")int opt);
 }

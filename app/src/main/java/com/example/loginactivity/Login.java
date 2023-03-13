@@ -16,6 +16,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.loginactivity.model.OPT_example.OtpExample;
+
 import java.util.Timer;
 import java.util.TimerTask;
 import retrofit2.Call;
@@ -34,7 +37,9 @@ public class Login extends AppCompatActivity {
     Button verify;
     TextView otp;
     TextView forgetpass;
+
     String userName1=null,pass1=null;
+    int otp1;
 
 
     @SuppressLint("MissingInflatedId")
@@ -106,72 +111,149 @@ public class Login extends AppCompatActivity {
                 }
 
             }
-            private void apiCall(String userName1, String pass1) {
 
-                Call<Datum> getlast_name= RetrofitAPI.getInstance().getMyApi().statusCode(userName1,pass1);
-                getlast_name.enqueue(new Callback<Datum>() {
+        });
+
+       verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                userName1 = userName.getText().toString();
+                pass1 = password.getText().toString();
+                Log.d("otpppp",otp.getText().toString());
+                Log.d("pass1",pass1);
+                otp1 = Integer.parseInt(otp.getText().toString());
+
+                Log.d("otp1", String.valueOf(otp1));
+
+                    ProgressBar.setVisibility(View.VISIBLE);
+
+//                    otpCall(userName1,pass1,otp1);
+                    otpCall(userName1,pass1,otp.getText().toString());
+
+            }
+//            private void otpCall(String userName1, String pass1,int otp1) {
+            private void otpCall(String userName1, String pass1,String  otp1) {
+
+                Call<OtpExample> getlast_name= RetrofitAPI.getInstance().getMyApi().getOtp(userName1,pass1,otp1);
+                getlast_name.enqueue(new Callback<OtpExample>() {
                     @Override
-                    public void onResponse(@NonNull Call<Datum> call, @NonNull Response<Datum> response) {
-                          Log.d("tresponse",response.body().toString());
+                    public void onResponse(@NonNull Call<OtpExample> call, @NonNull Response<OtpExample> response) {
+                        Log.d("tresponse",response.body().toString());
 
-                          if(response.body()!=null){
-                              if (response.body().getstatusCode()!=null){
+                        if(response.body()!=null){
+                            if (response.body().getStatusCode()!=null){
 
-                                  if (response.body().getstatusCode().equals("200")){
+                                if (response.body().getStatusCode()==200){
 
-                                      SharedPreferences sharedPref = getSharedPreferences("Login", Context.MODE_PRIVATE);
-                                      SharedPreferences.Editor editor = sharedPref.edit();
-                                      editor.putString("token", response.body().getToken());
-                                      editor.putString("name", userName1);
-                                      editor.apply();
+                                      Intent intent = new Intent(Login.this,Dashboard.class);
+                                      startActivity(intent);
+
+                                        ProgressBar.setVisibility(View.VISIBLE);
+                                        Timer timer=new Timer();
+                                        TimerTask timerTask=new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                            counter++;
+                                            ProgressBar.setProgress(counter);
+
+                                            if (counter==100){
+                                                timer.cancel();
+                                            }
+                                        }
+                                    };
+                                    timer.schedule(timerTask,100,100);
+                                    ProgressBar.setVisibility(View.INVISIBLE);
+                                }else{
+                                    ProgressBar.setVisibility(View.INVISIBLE);
+                                    AlertDialog.Builder alertDialog=new AlertDialog.Builder(Login.this);
+                                    alertDialog.setTitle("ERROR");
+                                    alertDialog.setMessage("OTP IS INVALID");
+
+                                    alertDialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    alertDialog.show();
+                                }
+                            }
+                        }
+
+                    }
+                    @Override
+                    public void onFailure(Call<OtpExample> call, Throwable t) {
+                    }
+                });
+            }
+        });
+    }
+
+    private void apiCall(String userName1, String pass1) {
+
+        Call<Datum> getlast_name= RetrofitAPI.getInstance().getMyApi().statusCode(userName1,pass1);
+        getlast_name.enqueue(new Callback<Datum>() {
+            @Override
+            public void onResponse(@NonNull Call<Datum> call, @NonNull Response<Datum> response) {
+                Log.d("tresponse",response.body().toString());
+
+                if(response.body()!=null){
+                    if (response.body().getstatusCode()!=null){
+
+                        if (response.body().getstatusCode().equals("200")){
+
+                            SharedPreferences sharedPref = getSharedPreferences("Login", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString("token", response.body().getToken());
+                            editor.putString("name", userName1);
+                            editor.apply();
 
 //                                      Intent intent = new Intent(Login.this,OTP.class);
 //                                      startActivity(intent);
 
-                                      btnSubmit.setVisibility(View.GONE);
-                                      forgetpass.setVisibility(View.GONE);
-                                      userName.setVisibility(View.GONE);
-                                      password.setVisibility(View.GONE);
-                                      Toast.makeText(Login.this,"OTP sent to your phone",Toast.LENGTH_SHORT).show();
-                                      verify.setVisibility(View.VISIBLE);
-                                      otp.setVisibility(View.VISIBLE);
-                                      ProgressBar.setVisibility(View.VISIBLE);
-                                      Timer timer=new Timer();
-                                      TimerTask timerTask=new TimerTask() {
-                                          @Override
-                                          public void run() {
-                                              counter++;
-                                              ProgressBar.setProgress(counter);
+                            btnSubmit.setVisibility(View.GONE);
+                            forgetpass.setVisibility(View.GONE);
+                            userName.setVisibility(View.GONE);
+                            password.setVisibility(View.GONE);
+                            Toast.makeText(Login.this,"OTP sent to your phone",Toast.LENGTH_SHORT).show();
+                            verify.setVisibility(View.VISIBLE);
+                            otp.setVisibility(View.VISIBLE);
+                            ProgressBar.setVisibility(View.VISIBLE);
+                            Timer timer=new Timer();
+                            TimerTask timerTask=new TimerTask() {
+                                @Override
+                                public void run() {
+                                    counter++;
+                                    ProgressBar.setProgress(counter);
 
-                                              if (counter==100){
-                                                  timer.cancel();
-                                              }
-                                          }
-                                      };
-                                      timer.schedule(timerTask,100,100);
-                                      ProgressBar.setVisibility(View.INVISIBLE);
-                                  }else{
-                                      ProgressBar.setVisibility(View.INVISIBLE);
-                                      AlertDialog.Builder alertDialog=new AlertDialog.Builder(Login.this);
-                                      alertDialog.setTitle("ERROR");
-                                      alertDialog.setMessage("UserName or Password is Wrong.");
+                                    if (counter==100){
+                                        timer.cancel();
+                                    }
+                                }
+                            };
+                            timer.schedule(timerTask,100,100);
+                            ProgressBar.setVisibility(View.INVISIBLE);
+                        }else{
+                            ProgressBar.setVisibility(View.INVISIBLE);
+                            AlertDialog.Builder alertDialog=new AlertDialog.Builder(Login.this);
+                            alertDialog.setTitle("ERROR");
+                            alertDialog.setMessage("UserName or Password is Wrong.");
 
-                                      alertDialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                          @Override
-                                          public void onClick(DialogInterface dialog, int which) {
-                                              dialog.dismiss();
-                                          }
-                                      });
-                                      alertDialog.show(); }
-                              }
-                          }
+                            alertDialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            alertDialog.show(); }
+                    }
+                }
 //                List<Datum> datumList=response.body();
-                    }
-                    @Override
-                    public void onFailure(@NonNull Call<Datum> call, Throwable t) {
-                        Toast.makeText(Login.this, "તમારું ઇન્ટરનેટ શરૂ કરો", Toast.LENGTH_LONG).show();
-                    }
-                });
+            }
+            @Override
+            public void onFailure(@NonNull Call<Datum> call, Throwable t) {
+                Toast.makeText(Login.this, "તમારું ઇન્ટરનેટ શરૂ કરો", Toast.LENGTH_LONG).show();
             }
         });
     }

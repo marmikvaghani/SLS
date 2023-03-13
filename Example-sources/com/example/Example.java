@@ -1,20 +1,20 @@
 
-package com.example.loginactivity.model.OPT_example;
+package com.example;
 
+import java.util.List;
+import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class OtpExample {
+@Generated("jsonschema2pojo")
+public class Example {
 
     @SerializedName("statusCode")
     @Expose
     private Integer statusCode;
-    @SerializedName("token")
+    @SerializedName("data")
     @Expose
-    private String token;
-    @SerializedName("engineerCity")
-    @Expose
-    private String engineerCity;
+    private List<Datum> data = null;
     @SerializedName("message")
     @Expose
     private String message;
@@ -27,20 +27,12 @@ public class OtpExample {
         this.statusCode = statusCode;
     }
 
-    public String getToken() {
-        return token;
+    public List<Datum> getData() {
+        return data;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getEngineerCity() {
-        return engineerCity;
-    }
-
-    public void setEngineerCity(String engineerCity) {
-        this.engineerCity = engineerCity;
+    public void setData(List<Datum> data) {
+        this.data = data;
     }
 
     public String getMessage() {
@@ -50,4 +42,5 @@ public class OtpExample {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }
